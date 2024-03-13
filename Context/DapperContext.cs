@@ -18,8 +18,12 @@ namespace _5s.Context
         /// <param name="configuration">Contains MongoDB connection string and database name</param>
         public DapperContext(IConfiguration configuration)
         {
-            // string envFilePath = "/home/russelharvey/Documents/school/soft-eng/fiveSAi-master/env/mongo.env";
-            string envFilePath = "./env/mongo.env";
+           // Get the current directory path
+            string currentDirectory = Directory.GetCurrentDirectory();
+
+            // Combine current directory path with the relative path to the .env file
+            string envFilePath = Path.Combine(currentDirectory, "env", "mongo.env");
+
             DotNetEnv.Env.Load(envFilePath);
 
             string mongodbPassword = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_PASSWORD");
