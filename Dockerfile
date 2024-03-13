@@ -8,22 +8,20 @@ ENV ASPNETCORE_ENVIRONMENT=Development
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG configuration=Release
 WORKDIR /src
-# COPY ["./5s.csproj", "backend/5s_backend/5s/"]
-# COPY ["./Program.cs", "backend/5s_backend/5s/"]
+
 COPY ["5s/5s.csproj", "./"]
-# COPY ["./Context", "backend/5s_backend/5s/"]
-# COPY ["./Repositories", "backend/5s_backend/5s/"]
-# COPY ["./Services", "backend/5s_backend/5s/"]
+
 RUN dotnet restore "./5s.csproj"
 COPY . .
 WORKDIR "/src/."
-# RUN dotnet build "5s.csproj" -c $configuration -o /app/build
-RUN dotnet build "5s.csproj" -c $configuration -o /app/5s
+
+# Specify a different output directory for the build artifacts
+RUN dotnet build "5s.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
 ARG configuration=Release
-# RUN dotnet publish "5s.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
-RUN dotnet publish "5s.csproj" -c $configuration -o /app/5s
+
+RUN dotnet publish "5s.csproj" -c $configuration -o /app
 
 FROM base AS final
 WORKDIR /app
