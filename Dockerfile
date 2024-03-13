@@ -13,14 +13,10 @@ COPY ["5s/5s.csproj", "./"]
 
 RUN dotnet restore "./5s.csproj"
 COPY . .
-
-# Modify this part to copy files only if they do not already exist
-RUN test -d /app/build/5s || mkdir -p /app/build/5s && cp -n /src/5s/appsettings.Development.json /app/build/5s/ \
-    && cp -n /src/5s/appsettings.json /app/build/5s/ \
-    && cp -n /src/5s/Properties/launchSettings.json /app/build/5s/ || true
-
 WORKDIR "/src/."
-RUN dotnet build "5s.csproj" -c $configuration -o /app
+
+# Specify a different output directory for the build artifacts
+RUN dotnet build "5s.csproj" -c $configuration -o /app/
 
 FROM build AS publish
 ARG configuration=Release
