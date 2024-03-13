@@ -18,21 +18,21 @@ namespace _5s.Context
         /// <param name="configuration">Contains MongoDB connection string and database name</param>
         public DapperContext(IConfiguration configuration)
         {
-           // Get the current directory path
-            string currentDirectory = Directory.GetCurrentDirectory();
+        //    // Get the current directory path
+        //     string currentDirectory = Directory.GetCurrentDirectory();
 
-            // Combine current directory path with the relative path to the .env file
-            string envFilePath = Path.Combine(currentDirectory, "env", "mongo.env");
+        //     // Combine current directory path with the relative path to the .env file
+        //     string envFilePath = Path.Combine(currentDirectory, "env", "mongo.env");
 
-            DotNetEnv.Env.Load(envFilePath);
+        //     DotNetEnv.Env.Load(envFilePath);
 
-            string mongodbPassword = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_PASSWORD");
-            string mongodbUsername = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_USERNAME");
+        //     string mongodbPassword = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_PASSWORD");
+        //     string mongodbUsername = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_USERNAME");
 
             // Construct the MongoDB connection string
-            var connectionString = configuration.GetConnectionString("MongoDB")
-                .Replace("<username>", mongodbUsername)
-                .Replace("<password>", mongodbPassword);
+            var connectionString = configuration.GetConnectionString("MongoDB");
+                // .Replace("<username>", mongodbUsername)
+                // .Replace("<password>", mongodbPassword);
 
             var client = new MongoClient(connectionString);
             _database = client.GetDatabase("FiveSDB");
