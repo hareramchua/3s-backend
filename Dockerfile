@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG configuration=Release
 WORKDIR /src
 
-COPY ["5s/5s.csproj", "./"]
+COPY ["5s.csproj", "./"]
 
 RUN dotnet restore "./5s.csproj"
 COPY . .

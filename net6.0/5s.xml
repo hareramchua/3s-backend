@@ -1,0 +1,682 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>5s</name>
+    </assembly>
+    <members>
+        <member name="T:_5s.Context.DapperContext">
+            <summary>
+            Wrapper class for database context.
+            </summary>
+        </member>
+        <member name="M:_5s.Context.DapperContext.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Create new instance of DapperContext.
+            </summary>
+            <param name="configuration">Contains MongoDB connection string and database name</param>
+        </member>
+        <member name="M:_5s.Context.DapperContext.GetDatabase">
+            <summary>
+            Get the MongoDB database instance.
+            </summary>
+            <returns>The MongoDB database instance</returns>
+        </member>
+        <member name="M:_5s.Controllers.BuildingController.CreateBuilding(_5s.Model.Building)">
+             <summary>
+             Creates a new building
+             </summary>
+             <param name="building">Building details</param>
+             <returns>Returns the newly created building</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /buildings
+                 {
+                     "buildingName: "GLE"
+                     "BuildingCode: "1"
+                     "Image[]: "images"
+                 }
+            
+             </remarks>
+             <response code="201">Successfully created a building</response>
+             <response code="400">Building details invalid</response>
+             <response code="500">Internal server error</response>
+        </member>
+        <member name="M:_5s.Controllers.BuildingController.GetBuilding">
+            <summary>
+            Get all building
+            </summary>
+            <returns>Returns all biulding</returns>
+            <response code="200">Buildings found</response>
+            <reponse code="204">No Buildings found</reponse>
+            <reponse code="500">Internal server error</reponse>
+        </member>
+        <member name="M:_5s.Controllers.BuildingController.GetBuilding(System.String)">
+            <summary>
+            Get Building by Id
+            </summary>
+            <param name="id">Building Id</param>
+            <returns>Returns the details of building with id <paramref name="id"/></returns>
+            <response code="200">Building found</response>
+            <reponse code="404">Building not found</reponse>
+            <reponse code="500">Internal server error</reponse>
+        </member>
+        <member name="M:_5s.Controllers.BuildingController.UpdateBuilding(System.String,_5s.Model.Building)">
+             <summary>
+             Update a Building by Id
+             </summary>
+             <param name="id"></param>
+             <param name="building"></param>
+             <returns>Returns the Id of the Updated Building</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /buildings
+                 {
+                     "buildingName: "GLE"
+                     "BuildingCode: "1"
+                     "Image[]: "images"
+                 }
+            
+             </remarks>
+             <response code="200">Building found</response>
+             <reponse code="404">Building not found</reponse>
+             <reponse code="500">Internal server error</reponse>
+        </member>
+        <member name="M:_5s.Controllers.BuildingController.DeleteBuilding(System.String)">
+            <summary>
+            Delete an Existing Building
+            </summary>
+            <param name="name">The Name of the Building that will be deleted</param>
+            <response code="200">Building found</response>
+            <reponse code="404">Building not found</reponse>
+            <reponse code="500">Internal server error</reponse>
+        </member>
+        <member name="M:_5s.Repositories.IBuildingRepository.CreateBuilding(_5s.Model.Building)">
+            <summary>
+            Create a building
+            </summary>
+            <param name="building">Building Model</param>
+            <returns>Returns Id of newly created building</returns>
+        </member>
+        <member name="M:_5s.Repositories.IBuildingRepository.GetAllBuildings">
+            <summary>
+            Gets all buidling
+            </summary>
+            <returns>Returns a list of all building with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IBuildingRepository.GetBuildingById(System.String)">
+            <summary>
+            Get building by Id
+            </summary>
+            <param name="id">Building Id</param>
+            <returns>Returns building details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IBuildingRepository.GetBuildingByName(System.String)">
+            <summary>
+            Get building by Name
+            </summary>
+            <param name="name">Building name</param>
+            <returns>Returns building details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IBuildingRepository.UpdateBuilding(System.String,_5s.Model.Building)">
+            <summary>
+            Updates an existing Building
+            </summary>
+            <param name="id">Building Id</param>
+            <param name="updatedBuilding">new Building Details</param>
+            <returns>Returns the Id of the updated building</returns>
+        </member>
+        <member name="M:_5s.Repositories.IBuildingRepository.DeleteBuilding(System.String)">
+            <summary>
+            Delete a building
+            </summary>
+            <param name="id">Building Id</param>
+        </member>
+        <member name="M:_5s.Repositories.ICommentRepository.CreateComment(_5s.Model.Comment)">
+            <summary>
+            Create Comment
+            </summary>
+            <param name="comment">Comment Model</param>
+            <returns>Return Id of newly created Comment</returns>
+        </member>
+        <member name="M:_5s.Repositories.ICommentRepository.GetAllComment">
+            <summary>
+            Gets All Comment
+            </summary>
+            <returns>Returns a list of all Comments with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.ICommentRepository.GetCommentById(System.String)">
+            <summary>
+            Get a Comment by Id
+            </summary>
+            <param name="id">Comment Id</param>
+            <returns>Returns a Comment with Details</returns>
+        </member>
+        <member name="M:_5s.Repositories.ICommentRepository.UpdateComment(System.String,_5s.Model.Comment)">
+            <summary>
+            Update an Existing Comment
+            </summary>
+            <param name="id">Comment Id</param>
+            <param name="updateComment">new Comment Details</param>
+            <returns>Returns Id of the UpdatedComment</returns>
+        </member>
+        <member name="M:_5s.Repositories.ICommentRepository.DeleteComment(System.String)">
+            <summary>
+            Delete Comment
+            </summary>
+            <param name="id">Comment Id</param>
+        </member>
+        <member name="M:_5s.Repositories.IRatingsRepository.CreateRatings(_5s.Model.Ratings)">
+            <summary>
+            Create Rating
+            </summary>
+            <param name="ratings">Rating Model</param>
+            <returns>Returns Id of newly created Ratings</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRatingsRepository.GetAllRatings">
+            <summary>
+            Gets All Ratings
+            </summary>
+            <returns>Returns list of all Rating with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRatingsRepository.GetRatingsById(System.String)">
+            <summary>
+            Gets Rating by Id
+            </summary>
+            <param name="id">Rating Id</param>
+            <returns>Returns Rating details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRatingsRepository.UpdateRatings(System.String,_5s.Model.Ratings)">
+            <summary>
+            Update and existing Ratings
+            </summary>
+            <param name="id">Rating Id</param>
+            <param name="updatedRatings">new Rating Details</param>
+            <returns>Returns updated Rating Id</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRatingsRepository.DeleteRatings(System.String)">
+            <summary>
+            Delete Rating
+            </summary>
+            <param name="id">Rating Id</param>
+        </member>
+        <member name="M:_5s.Repositories.IRedTagRepository.CreateRedTag(_5s.Model.RedTag)">
+            <summary>
+            Create RedTag
+            </summary>
+            <param name="redtag">RedTag Model</param>
+            <returns>Returns Id of newly created RedTag</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRedTagRepository.GetAllRedTags">
+            <summary>
+            Get All Redtag
+            </summary>
+            <returns>Returns a list of RedTag with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRedTagRepository.GetRedTagById(System.String)">
+            <summary>
+            Get RedTag by Id
+            </summary>
+            <param name="id">RedTag Id</param>
+            <returns>Returns RedTag details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRedTagRepository.GetRedTagByName(System.String)">
+            <summary>
+            Get RedTag by name
+            </summary>
+            <param name="Name">RedTag name</param>
+            <returns>Returns RedTag details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRedTagRepository.UpdateRedTag(System.String,_5s.Model.RedTag)">
+            <summary>
+            Update existing Redtag
+            </summary>
+            <param name="id">RedTag Id</param>
+            <param name="updatedRedTag">new RedTag details</param>
+            <returns>Return Id of updated RedTag</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRedTagRepository.DeleteRedTag(System.String)">
+            <summary>
+            Delete RedTag
+            </summary>
+            <param name="id">RedTag Id</param>
+        </member>
+        <member name="M:_5s.Repositories.IRoomRepository.CreateRoom(_5s.Model.Room)">
+            <summary>
+            Create Room
+            </summary>
+            <param name="room">Room Model</param>
+            <returns>Return Id of newly created Room</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRoomRepository.GetAllRooms">
+            <summary>
+            Get All Room
+            </summary>
+            <returns>Returns a list of all Room with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRoomRepository.GetRoomById(System.String)">
+            <summary>
+            Get Room by Id
+            </summary>
+            <param name="id">Room Id</param>
+            <returns>Returns Room details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRoomRepository.GetRoomByRoomNumber(System.String)">
+            <summary>
+            Get Room by RoomNumber
+            </summary>
+            <param name="roomNumber">Room RooomNumber</param>
+            <returns>Returns Room details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRoomRepository.UpdateRoom(System.String,_5s.Model.Room)">
+            <summary>
+            Update existing Room
+            </summary>
+            <param name="id">Room Id</param>
+            <param name="updatedRoom">new Room details</param>
+            <returns>Returns Id of updated Room</returns>
+        </member>
+        <member name="M:_5s.Repositories.IRoomRepository.DeleteRoom(System.String)">
+            <summary>
+            Delete Room
+            </summary>
+            <param name="id">Room Id</param>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceImageRepository.CreateSpaceImage(_5s.Model.SpaceImage)">
+            <summary>
+            Create SpaceImage
+            </summary>
+            <param name="spaceImage">Image</param>
+            <returns>Returns Id of Space Image</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceImageRepository.GetAllSpaceImageBySpaceId(System.String)">
+            <summary>
+            Gets all SpaceImage by SpaceId
+            </summary>
+            <param name="id">Space Id</param>
+            <returns>Returns All SpaceImage by Id</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceImageRepository.DeleteSpaceImage(System.String)">
+            <summary>
+            Delete SpaceImage by Id
+            </summary>
+            <param name="id">Id of SpaceImage</param>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceRepository.CreateSpace(_5s.Model.Space)">
+            <summary>
+            Create Space
+            </summary>
+            <param name="space">Space model</param>
+            <returns>Returns Id of newly created Space</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceRepository.GetAllSpace">
+            <summary>
+            Get all Space
+            </summary>
+            <returns>Returns a list of all Space with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceRepository.GetSpaceById(System.String)">
+            <summary>
+            Get Space by Id
+            </summary>
+            <param name="id">Space Id</param>
+            <returns>Returns Space details</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceRepository.GetSpaceByName(System.String)">
+            <summary>
+            Get Space by Name
+            </summary>
+            <param name="name">Space Name</param>
+            <returns>Returns Space details</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceRepository.UpdateSpace(System.String,_5s.Model.Space)">
+            <summary>
+            Update existing Space
+            </summary>
+            <param name="id"></param>
+            <param name="updatedSpace"></param>
+            <returns>Returns Id of updated Space</returns>
+        </member>
+        <member name="M:_5s.Repositories.ISpaceRepository.DeleteSpace(System.String)">
+            <summary>
+            Delete Space
+            </summary>
+            <param name="id">Space Id</param>
+        </member>
+        <member name="M:_5s.Repositories.IUserRepository.CreateUser(_5s.Model.User)">
+            <summary>
+            Create User
+            </summary>
+            <param name="userModel">User Model</param>
+            <returns>Returns Id of newly created User</returns>
+        </member>
+        <member name="M:_5s.Repositories.IUserRepository.GetAllUsers">
+            <summary>
+            Get all User
+            </summary>
+            <returns>Returns a list of all User with details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IUserRepository.GetUserById(System.String)">
+            <summary>
+            Get User by Id
+            </summary>
+            <param name="id">User Id</param>
+            <returns>Returns User details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IUserRepository.GetUserByName(System.String)">
+            <summary>
+            Get User by Name
+            </summary>
+            <param name="name">User Name</param>
+            <returns>Returns User details</returns>
+        </member>
+        <member name="M:_5s.Repositories.IUserRepository.UpdateUser(System.String,_5s.Model.User)">
+            <summary>
+            Update existing User
+            </summary>
+            <param name="id">User Id</param>
+            <param name="updatedUser">new User details</param>
+            <returns>Returns Id of updated User</returns>
+        </member>
+        <member name="M:_5s.Repositories.IUserRepository.DeleteUser(System.String)">
+            <summary>
+            Delete User
+            </summary>
+            <param name="id">User Id</param>
+        </member>
+        <member name="M:_5s.Services.IBuildingService.CreateBuilding(_5s.Model.Building)">
+            <summary>
+            Create a building
+            </summary>
+            <param name="building"></param>
+            <returns>Returns a building model</returns>
+        </member>
+        <member name="M:_5s.Services.IBuildingService.GetAllBuilding">
+            <summary>
+            Gets all buidling
+            </summary>
+            <returns>Returns a list of all building with details</returns>
+        </member>
+        <member name="M:_5s.Services.IBuildingService.GetBuildingById(System.String)">
+            <summary>
+            Get building by Id
+            </summary>
+            <param name="id"></param>
+            <returns>Returns building details</returns>
+        </member>
+        <member name="M:_5s.Services.IBuildingService.GetBuildingByName(System.String)">
+            <summary>
+            Get building by Name
+            </summary>
+            <param name="name"></param>
+            <returns>Returns building details</returns>
+        </member>
+        <member name="M:_5s.Services.IBuildingService.UpdateBuilding(System.String,_5s.Model.Building)">
+            <summary>
+            Updates an existing Building
+            </summary>
+            <param name="id"></param>
+            <param name="updatedBuilding"></param>
+            <returns>Returns the Id of the updated building</returns>
+        </member>
+        <member name="M:_5s.Services.IBuildingService.DeleteBuilding(System.String)">
+            <summary>
+            Delete a building
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:_5s.Services.ICommentService.CreateComment(_5s.Model.Comment)">
+            <summary>
+            Create comment
+            </summary>
+            <param name="comment">Comment detail</param>
+            <returns>id of comment</returns>
+        </member>
+        <member name="M:_5s.Services.ICommentService.GetAllComment">
+            <summary>
+            Get all comment
+            </summary>
+            <returns>Returns a list of all comment with details</returns>
+        </member>
+        <member name="M:_5s.Services.ICommentService.GetCommentById(System.String)">
+            <summary>
+            Get comment by Id
+            </summary>
+            <param name="id">Id of Comment</param>
+            <returns>Return a certain Comment detail</returns>
+        </member>
+        <member name="M:_5s.Services.ICommentService.UpdateComment(System.String,_5s.Model.Comment)">
+            <summary>
+            Update an existing comment
+            </summary>
+            <param name="id">Id of the exising comment</param>
+            <param name="updateComment">Updated comment details</param>
+            <returns>Return od of the new Comment</returns>
+        </member>
+        <member name="M:_5s.Services.ICommentService.DeleteComment(System.String)">
+            <summary>
+            Delete a comment by Id
+            </summary>
+            <param name="id">Id of the Comment</param>
+        </member>
+        <member name="M:_5s.Services.IRatingService.CreateRatings(_5s.Model.Ratings)">
+            <summary>
+            Create ratings
+            </summary>
+            <param name="ratings">Ratings detail</param>
+            <returns>Returns new rating Id</returns>
+        </member>
+        <member name="M:_5s.Services.IRatingService.GetAllRatings">
+            <summary>
+            Get all ratings
+            </summary>
+            <returns>Returns a list of all ratings detail</returns>
+        </member>
+        <member name="M:_5s.Services.IRatingService.GetRatingsById(System.String)">
+            <summary>
+            Get ratings by Id
+            </summary>
+            <param name="id">id of exisiting rating</param>
+            <returns>Return ratings detail</returns>
+        </member>
+        <member name="M:_5s.Services.IRatingService.UpdateRatings(System.String,_5s.Model.Ratings)">
+            <summary>
+            Update an exisiting rating
+            </summary>
+            <param name="id">id of existing rating</param>
+            <param name="updatedRatings">details of new rating</param>
+            <returns>Returns Id of the newly updated ratings</returns>
+        </member>
+        <member name="M:_5s.Services.IRatingService.DeleteRatings(System.String)">
+            <summary>
+            Delete rating
+            </summary>
+            <param name="id">id of existing rating</param>
+        </member>
+        <member name="M:_5s.Services.IRedTagService.CreateRedTag(_5s.Model.RedTag)">
+            <summary>
+            Create redtag model
+            </summary>
+            <param name="redtag">Redtag details</param>
+            <returns>Return newly created redtag</returns>
+        </member>
+        <member name="M:_5s.Services.IRedTagService.GetAllRedTag">
+            <summary>
+            Get all redtag
+            </summary>
+            <returns>Returns a list of all redtag with details</returns>
+        </member>
+        <member name="M:_5s.Services.IRedTagService.GetRedTagById(System.String)">
+            <summary>
+            Get redtag by Id
+            </summary>
+            <param name="id">Id of an existing redtag</param>
+            <returns>Return redtag details</returns>
+        </member>
+        <member name="M:_5s.Services.IRedTagService.GetRedTagByName(System.String)">
+            <summary>
+            Get redtag by name
+            </summary>
+            <param name="name">name of an exising redtag</param>
+            <returns>Return redtag details</returns>
+        </member>
+        <member name="M:_5s.Services.IRedTagService.UpdateRedTag(System.String,_5s.Model.RedTag)">
+            <summary>
+            Update an exising redtag by id
+            </summary>
+            <param name="id">id of an existing redtag</param>
+            <param name="updatedRedTag">new redtag details</param>
+            <returns>Return id of the newly updated redtag</returns>
+        </member>
+        <member name="M:_5s.Services.IRedTagService.DeleteRedTag(System.String)">
+            <summary>
+            Delete a redtag by Id
+            </summary>
+            <param name="id">Id of an existing redtag</param>
+        </member>
+        <member name="M:_5s.Services.IRoomService.CreateRoom(_5s.Model.Room)">
+            <summary>
+            Create a room
+            </summary>
+            <param name="room">Room Details</param>
+            <returns>Returns id of the newly created Room</returns>
+        </member>
+        <member name="M:_5s.Services.IRoomService.GetAllRoom">
+            <summary>
+            Get all room
+            </summary>
+            <returns>Returns a list of all room with details</returns>
+        </member>
+        <member name="M:_5s.Services.IRoomService.GetRoomById(System.String)">
+            <summary>
+            Get Room By Id
+            </summary>
+            <param name="id">Id of an exising room</param>
+            <returns>Returns room details</returns>
+        </member>
+        <member name="M:_5s.Services.IRoomService.GetRoomByRoomNumber(System.String)">
+            <summary>
+            Get Room by roomnumber
+            </summary>
+            <param name="roomNumber">roomnumber of an existing room</param>
+            <returns>Return room details</returns>
+        </member>
+        <member name="M:_5s.Services.IRoomService.UpdateRooms(System.String,_5s.Model.Room)">
+            <summary>
+            Update a room by Id
+            </summary>
+            <param name="id">Id of an existing room</param>
+            <param name="updatedRoom">new Room details</param>
+            <returns>Return id of the newly updated room</returns>
+        </member>
+        <member name="M:_5s.Services.IRoomService.DeleteRoom(System.String)">
+            <summary>
+            Delete a room
+            </summary>
+            <param name="id">Id of an exising room</param>
+        </member>
+        <member name="M:_5s.Services.ISpaceImageService.CreateSpaceImage(_5s.Model.SpaceImage)">
+            <summary>
+            Create SpaceImage
+            </summary>
+            <param name="spaceImage">Image</param>
+            <returns>Returns Id of Space Image</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceImageService.DeleteSpaceImage(System.String)">
+            <summary>
+            Delete SpaceImage by Id
+            </summary>
+            <param name="id">Id of SpaceImage</param>
+        </member>
+        <member name="M:_5s.Services.ISpaceImageService.GetAllSpaceImagesBySpaceId(System.String)">
+            <summary>
+            Gets all SpaceImage by SpaceId
+            </summary>
+            <param name="spaceId">Space Id</param>
+            <returns>Returns All SpaceImage by Id</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceService.CreateSpace(_5s.Model.Space)">
+            <summary>
+            Create a space
+            </summary>
+            <param name="space">Space details</param>
+            <returns>return Id of newly created Space</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceService.GetAllSpace">
+            <summary>
+            Get all space
+            </summary>
+            <returns>Return a list of all Space with details</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceService.GetSpaceById(System.String)">
+            <summary>
+            Get Space by Id
+            </summary>
+            <param name="id">id of an existing Space</param>
+            <returns>Return space details</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceService.GetSpaceByName(System.String)">
+            <summary>
+            Get Space by Name
+            </summary>
+            <param name="name">Name of an exising Space</param>
+            <returns>Return space details</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceService.UpdateSpace(System.String,_5s.Model.Space)">
+            <summary>
+            Update space by Id
+            </summary>
+            <param name="id">Id of an exising space</param>
+            <param name="updatedSpace">new Space details</param>
+            <returns>Return Id of newly updated Space</returns>
+        </member>
+        <member name="M:_5s.Services.ISpaceService.DeleteSpace(System.String)">
+            <summary>
+            Delete space
+            </summary>
+            <param name="id">Id of an existing space</param>
+        </member>
+        <member name="M:_5s.Services.IUserService.CreateUser(_5s.Model.User)">
+            <summary>
+            Create a User
+            </summary>
+            <param name="user">User details</param>
+            <returns>Return Id of the newly created space</returns>
+        </member>
+        <member name="M:_5s.Services.IUserService.GetAllUser">
+            <summary>
+            Get all user by Id
+            </summary>
+            <returns>Return a list of all User with details</returns>
+        </member>
+        <member name="M:_5s.Services.IUserService.GetUserById(System.String)">
+            <summary>
+            Get User by Id
+            </summary>
+            <param name="id">Id of an exising User</param>
+            <returns>Return User details</returns>
+        </member>
+        <member name="M:_5s.Services.IUserService.GetUserByName(System.String)">
+            <summary>
+            Get User by Name
+            </summary>
+            <param name="name">Name of an existing user</param>
+            <returns>Return User details</returns>
+        </member>
+        <member name="M:_5s.Services.IUserService.UpdateUser(System.String,_5s.Model.User)">
+            <summary>
+            Update an existing User by ID
+            </summary>
+            <param name="id">Id of an existing user</param>
+            <param name="updatedUser">Details og an existing user</param>
+            <returns>Returns Id of the newly update User</returns>
+        </member>
+        <member name="M:_5s.Services.IUserService.DeleteUser(System.String)">
+            <summary>
+            Delete a User
+            </summary>
+            <param name="id">Id of an existing User</param>
+        </member>
+    </members>
+</doc>
