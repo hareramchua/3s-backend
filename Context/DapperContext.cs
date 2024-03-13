@@ -19,7 +19,7 @@ namespace _5s.Context
         public DapperContext(IConfiguration configuration)
         {
             // string envFilePath = "/home/russelharvey/Documents/school/soft-eng/fiveSAi-master/env/mongo.env";
-            string envFilePath = "../env/mongo.env";
+            string envFilePath = "../../env/mongo.env";
             DotNetEnv.Env.Load(envFilePath);
 
             string mongodbPassword = Environment.GetEnvironmentVariable("MONGO_INITDB_ROOT_PASSWORD");
