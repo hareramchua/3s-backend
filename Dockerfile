@@ -8,22 +8,24 @@ ENV ASPNETCORE_ENVIRONMENT=Development
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG configuration=Release
 WORKDIR /src
-# COPY ["./5s.csproj", "backend/5s_backend/5s/"]
-# COPY ["./Program.cs", "backend/5s_backend/5s/"]
+
+# Copy the project file
 COPY ["5s/5s.csproj", "./"]
-# COPY ["./Context", "backend/5s_backend/5s/"]
-# COPY ["./Repositories", "backend/5s_backend/5s/"]
-# COPY ["./Services", "backend/5s_backend/5s/"]
+
+# Restore dependencies
 RUN dotnet restore "./5s.csproj"
+
+# Copy the entire project (this includes the .cs files)
 COPY . .
-WORKDIR "/src/."
-# RUN dotnet build "5s.csproj" -c $configuration -o /app/build
+
+# Build the project
 RUN dotnet build "5s.csproj" -c $configuration -o /app
 
 FROM build AS publish
 ARG configuration=Release
-# RUN dotnet publish "5s.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
-RUN dotnet publish "5s.csproj" -c $configuration -o /app
+
+# Publish the project
+RUN dotnet publish "5s.csproj" -c $configuration -o /app --no-restore
 
 FROM base AS final
 WORKDIR /app
