@@ -10,7 +10,7 @@ ARG configuration=Release
 WORKDIR /src
 # COPY ["./5s.csproj", "backend/5s_backend/5s/"]
 # COPY ["./Program.cs", "backend/5s_backend/5s/"]
-COPY ["5s.csproj", "./"]
+COPY ["5s/5s.csproj", "./"]
 # COPY ["./Context", "backend/5s_backend/5s/"]
 # COPY ["./Repositories", "backend/5s_backend/5s/"]
 # COPY ["./Services", "backend/5s_backend/5s/"]
