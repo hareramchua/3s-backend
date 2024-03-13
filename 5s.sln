@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5s", "5s\5s.csproj", "{1DCAA55A-518E-4273-8D92-B326F2C15B1E}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "5sDB", "5sDB\5sDB.sqlproj", "{435BF2F5-E04B-4BD5-8B02-9AEB578F212A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F25A8E3-27E3-4C25-8327-0BA9CA908272}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
