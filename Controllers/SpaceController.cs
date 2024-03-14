@@ -24,7 +24,7 @@ namespace _5s.Controllers
             try
             {
                 var newSpace = await _spaceService.CreateSpace(space);
-                return CreatedAtRoute("GetSpaceById", new { id = space.Id }, newSpace);
+                return CreatedAtRoute("CreateSpace", new { id = space.Id }, newSpace);
             }
             catch (Exception ex)
             {
