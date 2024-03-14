@@ -47,6 +47,7 @@ namespace _5s.Services
         {
             var updatedComment = new Comment
             {
+                Id = id,
                 Sort = updateComment.Sort,
                 SetInOrder = updateComment.SetInOrder,
                 Shine = updateComment.Shine,

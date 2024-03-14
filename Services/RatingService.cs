@@ -52,6 +52,7 @@ namespace _5s.Services
         {
             var ratingModel = new Ratings
             {
+                Id = id,
                 Sort = updatedRatings.Sort,
                 SetInOrder = updatedRatings.SetInOrder,
                 Shine = updatedRatings.Shine,
