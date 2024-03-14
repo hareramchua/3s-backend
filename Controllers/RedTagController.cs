@@ -25,7 +25,7 @@ namespace _5s.Controllers
             {
                 var newRedTag = await _redTagService.CreateRedTag(redtag);
 
-                return CreatedAtRoute("GetRedTagById", new { id = redtag.Id }, newRedTag);
+                return CreatedAtRoute("CreateRedTag", new { id = redtag.Id }, newRedTag);
             }
             catch (Exception ex)
             {

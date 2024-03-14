@@ -26,7 +26,7 @@ namespace _5s.Controllers
             try
             {
                 var newRoom = await _roomService.CreateRoom(room);
-                return CreatedAtRoute("GetRoomById", new { id = room.Id }, newRoom);
+                return CreatedAtRoute("CreateRoom", new { id = room.Id }, newRoom);
             }
             catch (Exception ex)
             {
