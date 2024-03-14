@@ -60,6 +60,7 @@ namespace _5s.Services
                 Sustain = updatedRatings.Sustain,
                 Security = updatedRatings.Security,
                 isActive = updatedRatings.isActive,
+                SpaceId = updatedRatings.SpaceId,
                 DateModified = DateTime.Now
             };
 
