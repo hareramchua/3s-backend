@@ -47,6 +47,7 @@ namespace _5s.Services
         {
             var UpdatedModel = new Room
             {
+                BuildingId = updatedRoom.BuildingId,
                 RoomNumber = updatedRoom.RoomNumber,
                 Image = updatedRoom.Image,
                 Status = updatedRoom.Status
