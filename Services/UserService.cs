@@ -54,8 +54,8 @@ namespace _5s.Services
             {
                 FirstName = updatedUser.FirstName,
                 LastName = updatedUser.LastName,
-                Username = user.Username,
-                Password = user.Password,
+                Username = updatedUser.Username,
+                Password = updatedUser.Password,
                 Role = updatedUser.Role
             };
 
