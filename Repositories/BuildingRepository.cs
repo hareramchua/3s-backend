@@ -53,7 +53,7 @@ namespace _5s.Repositories
             
             // Perform the update without modifying the _id field
             var filter = Builders<Building>.Filter.Eq(x => x.Id, id);
-            var result = await _buildingCollection.ReplaceOneAsync(filter, updatedUser);
+            var result = await _buildingCollection.ReplaceOneAsync(filter, updatedBuilding);
 
             // Check if any document was modified
             return result.ModifiedCount > 0 ? "1" : "0";
