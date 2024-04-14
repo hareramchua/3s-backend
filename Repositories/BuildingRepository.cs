@@ -49,7 +49,7 @@ namespace _5s.Repositories
 
         public async Task<string> UpdateBuilding(string id, Building updatedBuilding)
         {
-            updatedBuilding.id = id;
+            updatedBuilding.Id = id;
             
             // Perform the update without modifying the _id field
             var filter = Builders<Building>.Filter.Eq(x => x.Id, id);
