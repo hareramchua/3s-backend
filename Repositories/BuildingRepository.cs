@@ -49,7 +49,13 @@ namespace _5s.Repositories
 
         public async Task<string> UpdateBuilding(string id, Building updatedBuilding)
         {
-            var result = await _buildingCollection.ReplaceOneAsync(x => x.Id == id, updatedBuilding);
+            updatedBuilding.id = id;
+            
+            // Perform the update without modifying the _id field
+            var filter = Builders<Building>.Filter.Eq(x => x.Id, id);
+            var result = await _buildingCollection.ReplaceOneAsync(filter, updatedUser);
+
+            // Check if any document was modified
             return result.ModifiedCount > 0 ? "1" : "0";
         }
 
