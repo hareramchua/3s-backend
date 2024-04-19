@@ -9,7 +9,7 @@ namespace _5s.Model
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string? Name { get; set; }
-        public List<SpaceImage> Pictures { get; set; }
+        public List<SpaceImage>? Pictures { get; set; }
         public string RoomId { get; set; }
     }
 }
