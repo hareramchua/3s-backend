@@ -1,4 +1,4 @@
-﻿using _5s.Model;
+using _5s.Model;
 using _5s.Repositories;
 
 namespace _5s.Services
@@ -24,7 +24,8 @@ namespace _5s.Services
             {
                 SpaceId = spaceImage.SpaceId,
                 Image = spaceImage.Image,
-                UploadedDate = DateTime.Now
+                UploadedDate = DateTime.Now,
+                ForType = spaceImage.ForType
             };
 
             return await _spaceImageRepository.CreateSpaceImage(spaceImageModel);
