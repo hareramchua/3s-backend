@@ -1,4 +1,4 @@
-﻿using _5s.Model;
+using _5s.Model;
 using _5s.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +18,7 @@ namespace _5s.Controllers
 
         [HttpPost]
         [Route("upload/{spaceId}")]
-        public async Task<IActionResult> UploadSpaceImage(string spaceId, IFormFile file)
+        public async Task<IActionResult> UploadSpaceImage(string spaceId, IFormFile file,[FromForm] string forType)
         {
             try
             {
@@ -33,7 +33,8 @@ namespace _5s.Controllers
                     var spaceImage = new SpaceImage
                     {
                         SpaceId = spaceId,
-                        Image = memoryStream.ToArray()
+                        Image = memoryStream.ToArray(),
+                        ForType = forType,
                     };
 
                     var imageId = await _spaceImageService.CreateSpaceImage(spaceImage);
