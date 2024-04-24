@@ -16,7 +16,8 @@ namespace _5s.Services
             var spaceModel = new Space
             {
                 Name = space.Name,
-                RoomId = space.RoomId
+                RoomId = space.RoomId,
+                Standard = space.Standard
             };
 
             return await _spaceRepository.CreateSpace(spaceModel);
@@ -46,6 +47,7 @@ namespace _5s.Services
             var updateSpace = new Space
             {
                 Name = updatedSpace.Name,
+                Standard = updatedSpace.Standard
             };
 
             var updated = await _spaceRepository.UpdateSpace(id, updatedSpace);
