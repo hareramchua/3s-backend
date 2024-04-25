@@ -69,6 +69,24 @@ namespace _5s.Controllers
             }
         }
 
+        [HttpPut("{id}", Name = "UpdateSpaceImage")]
+        public async Task<IActionResult> UpdateSpaceImage(string id, [FromBody] SpaceImage spaceImage)
+        {
+            try
+            {
+                var dbSpace = await _spaceImageService.GetSpaceImageById(id);
+                if (dbSpace == null)
+                    return NotFound();
+                var updatedSpace = await _spaceImageService.UpdateSpaceImage(id, spaceImage);
+                return Ok(updatedSpace);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
 
         [HttpDelete]
         [Route("delete/{imageId}")]

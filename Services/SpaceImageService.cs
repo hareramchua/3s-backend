@@ -24,7 +24,7 @@ namespace _5s.Services
             {
                 SpaceId = spaceImage.SpaceId,
                 Image = spaceImage.Image,
-                UploadedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
                 ForType = spaceImage.ForType
             };
 
@@ -34,6 +34,27 @@ namespace _5s.Services
         public async Task DeleteSpaceImage(string id)
         {
             await _spaceImageRepository.DeleteSpaceImage(id);
+        }
+
+        public async Task<string> UpdateSpaceImage(string id, SpaceImage updatedSpaceImage)
+        {
+            var updateSpaceImage = new SpaceImage
+            {
+                SpaceId = updatedSpaceImage.SpaceId,
+                Image = updatedSpaceImage.Image,
+                ModifiedDate = DateTime.Now,
+                ForType = updatedSpaceImage.ForType,
+                Prediction = updatedSpaceImage.Prediction
+            };
+
+            var updated = await _spaceImageRepository.UpdateSpaceImage(id, updateSpaceImage);
+
+            return updated;
+        }
+
+        public async Task<SpaceImage> GetSpaceImageById(string id)
+        {
+            return await _spaceImageRepository.GetSpaceImageById(id);
         }
 
         public async Task<IEnumerable<SpaceImage>> GetAllSpaceImagesBySpaceId(string spaceId)

@@ -10,7 +10,8 @@ namespace _5s.Model
         public string Id { get; set; }
         public string SpaceId { get; set; } 
         public byte[]? Image { get; set; }
-        public DateTime UploadedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
         public string? ForType {get;set;}
+        public string? Prediction {get;set;}
     }
 }

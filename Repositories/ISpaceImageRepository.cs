@@ -21,5 +21,9 @@ namespace _5s.Repositories
         /// </summary>
         /// <param name="id">Id of SpaceImage</param>
         public Task DeleteSpaceImage(string id);
+
+        Task<SpaceImage> GetSpaceImageById(string id);
+
+        Task<string> UpdateSpaceImage(string id, SpaceImage updatedSpaceImage);
     }
 }

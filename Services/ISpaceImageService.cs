@@ -21,5 +21,9 @@ namespace _5s.Services
         /// <param name="spaceId">Space Id</param>
         /// <returns>Returns All SpaceImage by Id</returns>
         Task<IEnumerable<SpaceImage>> GetAllSpaceImagesBySpaceId(string spaceId);
+
+        Task<SpaceImage> GetSpaceImageById(string id);
+
+        Task<string> UpdateSpaceImage(string id, SpaceImage updatedSpaceImage);
     }
 }
