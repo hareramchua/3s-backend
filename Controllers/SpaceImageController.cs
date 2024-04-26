@@ -48,8 +48,29 @@ namespace _5s.Controllers
         }
 
         [HttpGet]
+        [Route("get/spaces")]
+        public async Task<IActionResult> GetSpaceImages()
+        {
+            try
+            {
+                var spaceImages = await _spaceImageService.GetAllSpaceImage();
+
+                if (spaceImages == null || !spaceImages.Any())
+                {
+                    return NotFound("Images not found.");
+                }
+
+                return Ok(spaceImages);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
         [Route("get/{spaceId}")]
-        public async Task<IActionResult> GetSpaceImages(string spaceId)
+        public async Task<IActionResult> GetSpaceImagesById(string spaceId)
         {
             try
             {

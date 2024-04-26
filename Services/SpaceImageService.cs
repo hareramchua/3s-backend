@@ -57,6 +57,11 @@ namespace _5s.Services
             return await _spaceImageRepository.GetSpaceImageById(id);
         }
 
+        public async Task<IEnumerable<SpaceImage>> GetAllSpaceImage()
+        {
+            return await _spaceImageRepository.GetAllSpaceImage();
+        }
+
         public async Task<IEnumerable<SpaceImage>> GetAllSpaceImagesBySpaceId(string spaceId)
         {
             // if (spaceId <= 0)

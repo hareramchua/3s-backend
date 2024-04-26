@@ -25,5 +25,7 @@ namespace _5s.Services
         Task<SpaceImage> GetSpaceImageById(string id);
 
         Task<string> UpdateSpaceImage(string id, SpaceImage updatedSpaceImage);
+
+        Task<IEnumerable<SpaceImage>> GetAllSpaceImage();
     }
 }

@@ -30,6 +30,11 @@ namespace _5s.Repositories
         {
             return await _spaceImageCollection.Find(x => x.SpaceId == spaceId).ToListAsync();
         }
+
+         public async Task<IEnumerable<SpaceImage>> GetAllSpaceImage()
+        {
+            return await _spaceImageCollection.Find(_ => true).ToListAsync();
+        }
         public async Task<SpaceImage> GetSpaceImageById(string id)
         {
             return await _spaceImageCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

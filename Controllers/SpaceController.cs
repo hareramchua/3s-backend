@@ -85,7 +85,7 @@ namespace _5s.Controllers
             }
         }
 
-        [HttpPut("{id}", Name = "UpdateSpaceViewedDate")]
+        [HttpPut("{id}/ViewedDate", Name = "UpdateSpaceViewedDate")]
         public async Task<IActionResult> UpdateSpaceViewedDate(string id)
         {
             try
@@ -102,7 +102,7 @@ namespace _5s.Controllers
             }
         }
 
-        [HttpPut("{id}", Name = "UpdateSpaceAssessedDate")]
+        [HttpPut("{id}/AssessedDate", Name = "UpdateSpaceAssessedDate")]
         public async Task<IActionResult> UpdateSpaceAssessedDate(string id)
         {
             try
