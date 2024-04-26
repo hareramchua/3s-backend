@@ -39,5 +39,6 @@ namespace _5s.Repositories
         /// </summary>
         /// <param name="id">Space Id</param>
         public Task DeleteSpace(string id);
+
     }
 }

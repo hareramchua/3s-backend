@@ -39,5 +39,9 @@ namespace _5s.Services
         /// </summary>
         /// <param name="id">Id of an existing space</param>
         public Task DeleteSpace(string id);
+
+        public Task<string> UpdateViewedDate(string id, Space space);
+
+        public Task<string> UpdateAssessedDate(string id, Space space);
     }
 }

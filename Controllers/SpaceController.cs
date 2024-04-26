@@ -85,6 +85,40 @@ namespace _5s.Controllers
             }
         }
 
+        [HttpPut("{id}", Name = "UpdateSpaceViewedDate")]
+        public async Task<IActionResult> UpdateSpaceViewedDate(string id)
+        {
+            try
+            {
+                var dbSpace = await _spaceService.GetSpaceById(id);
+                if (dbSpace == null)
+                    return NotFound();
+                var updatedSpace = await _spaceService.UpdateViewedDate(id, dbSpace);
+                return Ok(updatedSpace);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut("{id}", Name = "UpdateSpaceAssessedDate")]
+        public async Task<IActionResult> UpdateSpaceAssessedDate(string id)
+        {
+            try
+            {
+                var dbSpace = await _spaceService.GetSpaceById(id);
+                if (dbSpace == null)
+                    return NotFound();
+                var updatedSpace = await _spaceService.UpdateAssessedDate(id, dbSpace);
+                return Ok(updatedSpace);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpDelete("{id}", Name = "DeleteSpace")]
         public async Task<IActionResult> DeleteSpace(string id)
         {

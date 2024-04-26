@@ -12,5 +12,7 @@ namespace _5s.Model
         public List<SpaceImage>? Pictures { get; set; }
         public string RoomId { get; set; }
         public string? Standard {get;set; }
+        public DateTime? ViewedDate {get;set; }
+        public DateTime? AssessedDate {get;set; }
     }
 }

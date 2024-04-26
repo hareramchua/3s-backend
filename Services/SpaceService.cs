@@ -17,7 +17,7 @@ namespace _5s.Services
             {
                 Name = space.Name,
                 RoomId = space.RoomId,
-                Standard = space.Standard
+                Standard = space.Standard,
             };
 
             return await _spaceRepository.CreateSpace(spaceModel);
@@ -42,12 +42,27 @@ namespace _5s.Services
             return await _spaceRepository.GetSpaceByName(name); 
         }
 
+        public async Task<string> UpdateViewedDate(string id, Space space){
+            space.ViewedDate = DateTime.Now;
+
+            var updated = await _spaceRepository.UpdateSpace(id, space);
+            return updated;
+        }
+
+        public async Task<string> UpdateAssessedDate(string id, Space space){
+            space.AssessedDate = DateTime.Now;
+
+            var updated = await _spaceRepository.UpdateSpace(id, space);
+            return updated;
+        }
+
         public async Task<string> UpdateSpace(string id, Space updatedSpace)
         {
             var updateSpace = new Space
             {
+                Id = id,
                 Name = updatedSpace.Name,
-                Standard = updatedSpace.Standard
+                Standard = updatedSpace.Standard,
             };
 
             var updated = await _spaceRepository.UpdateSpace(id, updatedSpace);
