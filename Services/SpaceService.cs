@@ -58,14 +58,15 @@ namespace _5s.Services
 
         public async Task<string> UpdateSpace(string id, Space updatedSpace)
         {
-            var updateSpace = new Space
+            var UpdatedModel = new Space
             {
                 Id = id,
                 Name = updatedSpace.Name,
                 Standard = updatedSpace.Standard,
+                RoomId = updatedSpace.RoomId,
             };
 
-            var updated = await _spaceRepository.UpdateSpace(id, updatedSpace);
+            var updated = await _spaceRepository.UpdateSpace(id, UpdatedModel);
 
             return updated;
         }

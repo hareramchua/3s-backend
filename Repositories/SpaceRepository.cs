@@ -45,7 +45,7 @@ namespace _5s.Repositories
 
         public async Task<string> UpdateSpace(string id, Space updatedSpace)
         {
-        //   updatedSpace.Id = id;
+            updatedSpace.Id = id;
             
             // Perform the update without modifying the _id field
             var filter = Builders<Space>.Filter.Eq(x => x.Id, id);
