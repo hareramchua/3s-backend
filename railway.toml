@@ -1,6 +1,6 @@
 ﻿[build]
 builder = "DOCKERFILE"
-buildCommand = "dotnet publish"
+buildCommand = "dotnet publish -c Release -o publish"
 dockerfilePath = "Dockerfile"
 
 [deploy]
@@ -12,3 +12,4 @@ restartPolicyMaxRetries = 10
 [services.blissful-motivation]
 internal_port = 7124
 external_port = 80
+startCommand = "dotnet /app/5s.dll"
