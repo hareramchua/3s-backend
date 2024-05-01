@@ -10,5 +10,4 @@ restartPolicyMaxRetries = 10
 
 [services.blissful-motivation]
 internal_port = 7124
-external_port = 80
 startCommand = "dotnet 5s.dll"
